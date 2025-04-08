@@ -15,13 +15,17 @@ public class LinkedList {
     }
 
     public static void deleteNode(int data){
+
+        if(head.data==data)
+            head=head.next;//Case to handle deletion of first node
+
         Node temp=head;
         if(temp==null){
             System.out.println("List is empty!!");
             return;
         }
         while(temp!=null){
-            if(temp.next.data==data){
+            if(temp.next!=null&&temp.next.data==data){
                 temp.next=temp.next.next;
                 System.out.println("Data deleted successfully!!");
             }
@@ -50,7 +54,7 @@ public class LinkedList {
         addNode(6);
         addNode(7);
         displayList();
-        deleteNode(7);
+        deleteNode(2);
         displayList();
     }
 }
