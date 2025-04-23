@@ -69,6 +69,24 @@ public class bsTree {
         }
     }
 
+    //Method for searching a key in bst using recursion
+    public void search(bstNode node,int key){
+        if(node==null){
+            System.out.println("Key not found!!");
+            return;
+        }
+        else if(node.data==key){
+            System.out.println("Key Found!!");
+            return;
+        }
+        else{
+            if(key>node.data)
+                search(node.right,key);
+            else
+                search(node.left,key);
+        }
+    }
+
     public void postOrderTraversal(bstNode node) {
         if (node != null) {
             postOrderTraversal(node.left);
@@ -93,6 +111,7 @@ public class bsTree {
         System.out.print("Pre-order Traversal : ");
         bt.preOrderTraversal(root);
         System.out.println();
+        bt.search(root,10);
     }
 }
 
