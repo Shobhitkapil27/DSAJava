@@ -68,6 +68,26 @@ public class DoublyLL {
         System.out.println("No node found with that data!!");
     }
 
+    public void search(int key){
+        if(tail==null){
+            System.out.println("The list is empty!!");
+            return;
+        }
+
+         DoublyNode temp=head;
+         DoublyNode temp2=tail;
+
+         while(temp!=temp2&&(temp.prev!=null&&temp2.next!=null)){
+             if(temp.data==key||temp2.data==key){
+                 System.out.println("Element found in the list!!");
+                 return;
+             }
+             temp=temp.prev;
+             temp2=temp2.next;
+         }
+        System.out.println("Element not found!!");
+    }
+
     public static void main(String[] args) {
         DoublyLL d=new DoublyLL();
         d.addNode(2);
@@ -77,10 +97,13 @@ public class DoublyLL {
         d.addNode(6);
         d.addNode(7);
         d.addNode(9);
+        d.addNode(11);
+        d.addNode(15);
         d.displayForward();
         d.displayReverse();
         d.DeleteNodeByData(2);
         d.displayForward();
+        d.search(12);
     }
 }
 
