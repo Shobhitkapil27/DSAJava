@@ -69,6 +69,14 @@ public class bsTree {
         }
     }
 
+    public void postOrderTraversal(bstNode node) {
+        if (node != null) {
+            postOrderTraversal(node.left);
+            postOrderTraversal(node.right);
+            System.out.print(node.data + " ");
+        }
+    }
+
     //Method for searching a key in bst using recursion
     public void search(bstNode node,int key){
         if(node==null){
@@ -87,12 +95,14 @@ public class bsTree {
         }
     }
 
-    public void postOrderTraversal(bstNode node) {
-        if (node != null) {
-            postOrderTraversal(node.left);
-            postOrderTraversal(node.right);
-            System.out.print(node.data + " ");
-        }
+    public int height(bstNode node){
+         if(node==null)
+             return -1;
+
+         int maxright=height(node.right);
+         int maxleft=height(node.left);
+
+         return Math.max(maxleft,maxright)+1;
     }
 
     public static void main(String[] args) {
@@ -112,6 +122,7 @@ public class bsTree {
         bt.preOrderTraversal(root);
         System.out.println();
         bt.search(root,10);
+        System.out.println("Maximum Height of Tree : "+bt.height(root));
     }
 }
 
