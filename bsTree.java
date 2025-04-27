@@ -95,6 +95,7 @@ public class bsTree {
         }
     }
 
+    //Method for finding height of the tree
     public int height(bstNode node){
          if(node==null)
              return -1;
@@ -103,6 +104,31 @@ public class bsTree {
          int maxleft=height(node.left);
 
          return Math.max(maxleft,maxright)+1;
+    }
+
+    //Method for finding maximum width of a tree
+    public int maxWidth(bstNode node){
+         int level=height(node);
+         int maxWidth=0;
+         int width=0;
+
+         for(int i=1;i<=level;i++){
+             width=getWidth(node,i);
+             if(width>maxWidth)
+                 maxWidth=width;
+         }
+         return maxWidth;
+    }
+
+    public int getWidth(bstNode node, int level){
+        if(node==null)
+             return 0;
+        if(level==1)
+            return 1;
+        else if(level>1)
+            return (getWidth(node.left,level-1)+getWidth(node.right,level-1));
+
+        return 0;
     }
 
     public static void main(String[] args) {
@@ -122,7 +148,9 @@ public class bsTree {
         bt.preOrderTraversal(root);
         System.out.println();
         bt.search(root,10);
+        System.out.println("Maximum Width of Tree : "+bt.maxWidth(root));
         System.out.println("Maximum Height of Tree : "+bt.height(root));
+
     }
 }
 
