@@ -1,0 +1,9 @@
+<hibernate-configuration>
+    <session-factory>
+        <property name="connection.url">jdbc:postgresql://localhost:5432/apple</property>
+        <property name="connection.username">apple</property>
+        <property name="connection.password">root</property>
+        <property name="connection.driver_class">org.postgresql.Driver</property>
+        <property name="hbm2ddl.auto">update</property>
+    </session-factory>
+</hibernate-configuration>
