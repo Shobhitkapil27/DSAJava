@@ -27,6 +27,7 @@ public class LinkedList {
         while(temp!=null){
             if(temp.next!=null&&temp.next.data==data){
                 temp.next=temp.next.next;
+                continue;
                 System.out.println("Data deleted successfully!!");
             }
             temp=temp.next;
@@ -67,4 +68,5 @@ class Node{
     public Node(int data){
         this.data=data;
     }
+
 }
